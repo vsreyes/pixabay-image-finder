@@ -13,7 +13,7 @@ class ImageResults extends Component {
   };
 
   handleOpen = img => {
-    this.setState({ open: false });
+    this.setState({ open: true, currentImg: img });
   };
 
   handleClose = () => {
@@ -52,7 +52,7 @@ class ImageResults extends Component {
     }
 
     const actions = [
-      <FlatButton label='Close' primary={true} onClick={this.handleOpen} />,
+      <FlatButton label='Close' primary={true} onClick={this.handleClose} />,
     ];
 
     return (
@@ -62,7 +62,7 @@ class ImageResults extends Component {
           actions={actions}
           modal={false}
           open={this.state.open}
-          onRequestClose={this.handleOpen}
+          onRequestClose={this.handleClose}
         >
           <img src={this.state.currentImg} alt='' style={{ width: '100%' }} />
         </Dialog>
@@ -71,7 +71,7 @@ class ImageResults extends Component {
   }
 }
 
-ImageResults.PropTypes = {
+ImageResults.propTypes = {
   images: PropTypes.array.isRequired,
 };
 
